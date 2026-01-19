@@ -6,16 +6,20 @@
   ],
   "links": [
     {
-      "text": "Substack",
-      "url": "#"
-    },
-    {
       "text": "LinkedIn",
-      "url": "#"
+      "url": "https://www.linkedin.com/in/austin-wade-smith-65544932/"
     },
     {
-      "text": "Link 3",
-      "url": "#"
+      "text": "Substack",
+      "url": "https://austinwadesmith.substack.com/"
+    },
+    {
+      "text": "X",
+      "url": "https://x.com/_newcubes_"
+    }
+    {
+      "text": "Github",
+      "url": "https://github.com/newcubes"
     }
   ]
 }
