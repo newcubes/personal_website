@@ -308,24 +308,38 @@
             
             const tabs = document.querySelectorAll('.section-tab');
             const contents = document.querySelectorAll('.section-content');
+            let mobileInitialized = false;
             
             function handleMobileView() {
                 if (window.innerWidth <= 900) {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    
-                    const aboutTab = document.querySelector('.section-tab[data-section="about"]');
-                    const aboutContent = document.getElementById('about');
-                    if (aboutTab && aboutContent) {
-                        aboutTab.classList.add('active');
-                        aboutContent.classList.add('active');
+                    if (!mobileInitialized) {
+                        tabs.forEach(t => t.classList.remove('active'));
+                        contents.forEach(c => c.classList.remove('active'));
+                        
+                        const aboutTab = document.querySelector('.section-tab[data-section="about"]');
+                        const aboutContent = document.getElementById('about');
+                        if (aboutTab && aboutContent) {
+                            aboutTab.classList.add('active');
+                            aboutContent.classList.add('active');
+                        }
+                        mobileInitialized = true;
                     }
+                } else {
+                    mobileInitialized = false;
                 }
             }
             
             handleMobileView();
             
-            window.addEventListener('resize', handleMobileView);
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    if (!mobileInitialized && window.innerWidth <= 900) {
+                        handleMobileView();
+                    }
+                }, 250);
+            });
             
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
