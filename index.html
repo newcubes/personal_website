@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aws</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 20px 20px 20px;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 60px;
+            padding-top: 20px;
+        }
+
+        .column h2 {
+            color: #1c1c1c;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .h2-icon,
+        .section-tab-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+
+        .column p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .column p a {
+            color: rgb(218, 71, 17);
+            text-decoration: none;
+        }
+
+        .list {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 0 1.8em;
+            align-items: start;
+        }
+
+        .list-date {
+            color: #aeaeae;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .list-content {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .list-content p {
+            margin-bottom: 0;
+        }
+
+        .list-description {
+            color: #aeaeae;
+            line-height: 1.8;
+            margin-top: 0;
+            font-style: italic;
+        }
+
+        .three-column-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .three-column-links p {
+            margin-bottom: 0;
+        }
+
+        .section-tabs {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .section-tab {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #1c1c1c;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-tab:hover {
+            color: #555;
+        }
+
+        .section-tab.active {
+            text-decoration: underline;
+        }
+
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Responsive design */
+        @media (max-width: 900px) {
+            .columns {
+                grid-template-columns: 1fr;
+            }
+
+            .column:nth-child(1),
+            .column:nth-child(2) {
+                grid-column: 1;
+            }
+
+            .three-column-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load about section from JSON
+            fetch('about.json')
+                .then(response => response.json())
+                .then(data => {
+                    const titleElement = document.getElementById('about-title');
+                    const contentElement = document.getElementById('about-content');
+                    
+                    if (titleElement) {
+                        titleElement.textContent = data.title;
+                    }
+                    
+                    if (contentElement) {
+                        let html = '';
+                        
+                        // Add paragraphs
+                        data.paragraphs.forEach((para, index) => {
+                            html += `<p>${para}</p>`;
+                            if (index < data.paragraphs.length - 1) {
+                                html += '<br>';
+                            }
+                        });
+                        
+                        // Add links
+                        if (data.links && data.links.length > 0) {
+                            html += '<div class="three-column-links">';
+                            data.links.forEach(link => {
+                                html += `<p><a href="${link.url}">${link.text}</a></p>`;
+                            });
+                            html += '</div>';
+                        }
+                        
+                        contentElement.innerHTML = html;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading about.json:', error);
+                });
+            
+            // Section tab functionality
+            const tabs = document.querySelectorAll('.section-tab');
+            const contents = document.querySelectorAll('.section-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const sectionId = this.getAttribute('data-section');
+                    
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="columns">
+            <div class="column" id="about-section">
+                <h2><img src="icon4.svg" alt="" class="h2-icon"><span id="about-title">About Austin Wade Smith</span></h2>
+                <div id="about-content"></div>
+            </div>
+            <div class="column">
+                <div class="section-tabs">
+                    <button class="section-tab active" data-section="recent"><img src="icon1.svg" alt="" class="section-tab-icon"><span>Recent</span></button>
+                    <button class="section-tab" data-section="writing"><img src="icon2.svg" alt="" class="section-tab-icon"><span>Talks & Writing</span></button>
+                    <button class="section-tab" data-section="features"><img src="icon3.svg" alt="" class="section-tab-icon"><span>Features</span></button>
+                    <button class="section-tab" data-section="projects"><img src="icon3.svg" alt="" class="section-tab-icon"><span>Projects</span></button>
+                </div>
+                
+                <div id="recent" class="section-content active">
+                    <div class="list">
+                        <div class="list-date">Winter 2026</div>
+                        <div class="list-content">
+                            <p>Claims Engine: A modular oracle system for ecological accounting and contracting</p>
+                            <div class="list-description">I'm building a framework for grassroots and local impact attestations with a grant from Celo and the Ethereum Foundation.</div>
+                        </div>
+                        <div class="list-date">Winter 2026</div>
+                        <div class="list-content">
+                            <p><a href="https://www.regen.foundation/#ecological-institutions-book"><em>Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World</em></a></p>
+                            <div class="list-description">You can acquire an advance copy and learn more about the book.</div>
+                        </div>
+                        <div class="list-date">Jan 2026</div>
+                        <div class="list-content">
+                            <p>Wind Trust</p>
+                            <div class="list-description">A DAO whose permissioning and allocation protocols are controlled by wind flows in NYC.</div>
+                        </div>
+                        <div class="list-date">Dec 2025</div>
+                        <div class="list-content">
+                            <p><a href="#">Institutional Development Kit</a></p>
+                            <div class="list-description">An introduction to the notion of an IDK, and how to use them.</div>
+                        </div>
+                        <div class="list-date">Dec 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://www.youtube.com/watch?v=tLS6WSxqnAs">River Computer Salon</a> at The Fold, San Francisco</p>
+                            <div class="list-description">Introduction to River Computer in theory and practice.</div>
+                        </div>
+                        <div class="list-date">Dec 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/">Inside Bioregionalism’s Tech-Driven Revival</a> by Doug Bierend, Noema Magazine</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">Dec 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483">Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good</a> UC-Berkeley Lab for Inclusive FinTech (LIFT)</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">Fall 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://autonomousforest.org/">Terra0: Autonomous Forest</a></p>
+                            <div class="list-description">I'm a founding board member of the Autonomous Forest Verein.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="writing" class="section-content">
+                    <div class="list">
+                        <div class="list-date">Winter 2026</div>
+                        <div class="list-content">
+                            <p><a href="https://www.regen.foundation/#ecological-institutions-book"><em>Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World</em></a></p>
+                            <div class="list-description">An intro to the book with a focus on the Institutional Development Kit (IDK)</div>
+                        </div>
+                        <div class="list-date">Dec 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://www.youtube.com/watch?v=tLS6WSxqnAs">River Computer Salon</a> at The Fold, San Francisco</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">Jun 2025</div>
+                        <div class="list-content">
+                            <p>"Protocols of Interdependence" Lecture at Blockchain @ University of British Columbia</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">May 2025</div>
+                        <div class="list-content">
+                            <p><a href="https://www.youtube.com/watch?v=c7bMmjbbdTk">"Living Covenants in Theory and Practice"</a> Presentation at the Cascadia Bioregional Summit</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">May 2025</div>
+                        <div class="list-content">
+                            <p><a href="#">A Short Introduction to Feral Technology</a></p>
+                            <div class="list-description">Feral Technology Series</div>
+                        </div>
+                        <div class="list-date">Feb 2025</div>
+                        <div class="list-content">
+                            <p><a href="#">"Introducing the Claims Engine"</a> United Nations Innovation Partnership Forum</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p><a href="#">Ecological Institutions: Protocols to Grow Autonomous and Convivial Actors</a></p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p>"Legibility for the Living World" in <i>Interspecies Primer</i> by Light Art Space</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p>"The Shape of DAOs to Come" presentation at ETH Denver</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p><a href="#">Commons Sense - The Social Life of Ecological ↔ Digital Linkages</a></p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2023</div>
+                        <div class="list-content">
+                            <p>"Building Feral Webs" presentation at Climate Tectonics Conference at Harvard GSD</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2023</div>
+                        <div class="list-content">
+                            <p>Undualing</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2023</div>
+                        <div class="list-content">
+                            <p>Queer Servers and Feral Webs</p>
+                            <div class="list-description">Feral Technology Series</div>
+                        </div>
+                        <div class="list-date">2020</div>
+                        <div class="list-content">
+                            <p>"Place Holder" Are.na Annual 2020</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2020</div>
+                        <div class="list-content">
+                            <p>"Digital Animism" workshop at Pioneer Works, New York</p>
+                            <div class="list-description"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="features" class="section-content">
+                    <div class="list">
+                        <div class="list-date">2025</div>
+                        <div class="list-content">
+                            <p><a href="https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/">Inside Bioregionalism’s Tech-Driven Revival</a> by Doug Bierend, Noema Magazine</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2025</div>
+                        <div class="list-content">
+                            <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483">Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good</a> UC-Berkeley Lab for Inclusive FinTech (LIFT)</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2025</div>
+                        <div class="list-content">
+                            <p>"Blockchain Gov: Network Nations" Podcast</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p>"More Than Human" Future Observatory Journal No.2 by the Design Museum</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p><a href="https://www.e-flux.com/journal/146/611854/daylighting-cryptocurrency-s-waterstreams">"Daylighting Cryptocurrency’s Water Streams"</a> by Isabel Ling, eflux journal #146</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p>"Ecological Institutions" Ma Earth Podcast with Jessie Kate Schingler and Tony Lai</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2024</div>
+                        <div class="list-content">
+                            <p>"Open Source Commons for Sensemaking" Future Fossils Podcast</p>
+                            <div class="list-description"></div>
+                        </div>
+                        <div class="list-date">2023</div>
+                        <div class="list-content">
+                            <p>"Legibility of the Living World" Ma Earth Podcast</p>
+                            <div class="list-description"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="projects" class="section-content">
+                        <div class="list">
+                            <div class="list-date">2025</div>
+                            <div class="list-content">
+                                <p>Wind Trust</p>
+                                <div class="list-description"></div>
+                            </div>
+                            <div class="list-date">2023</div>
+                            <div class="list-content">
+                                <p>"Legibility of the Living World" Ma Earth Podcast</p>
+                                <div class="list-description"></div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
