@@ -262,6 +262,7 @@
     </style>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Load about.json
             fetch('about.json')
                 .then(response => response.json())
                 .then(data => {
@@ -304,6 +305,51 @@
                 })
                 .catch(error => {
                     console.error('Error loading about.json:', error);
+                });
+            
+            // Load content.json for sections
+            fetch('content.json')
+                .then(response => response.json())
+                .then(data => {
+                    function generateListHTML(items) {
+                        if (!items || items.length === 0) {
+                            return '<div class="list"><div class="list-date"></div><div class="list-content"><p>coming soon...</p></div></div>';
+                        }
+                        
+                        let html = '<div class="list">';
+                        items.forEach(item => {
+                            html += `<div class="list-date">${item.date || ''}</div>`;
+                            html += '<div class="list-content">';
+                            
+                            // Build the title with optional link, italic, and suffix
+                            let titleText = item.italic ? `<em>${item.title}</em>` : item.title;
+                            if (item.url) {
+                                titleText = `<a href="${item.url}">${titleText}</a>`;
+                            }
+                            html += `<p>${titleText}${item.suffix || ''}</p>`;
+                            
+                            // Add description if present
+                            if (item.description) {
+                                html += `<div class="list-description">${item.description}</div>`;
+                            }
+                            
+                            html += '</div>';
+                        });
+                        html += '</div>';
+                        return html;
+                    }
+                    
+                    // Render each section
+                    const sections = ['recent', 'talksandwriting', 'features', 'projects'];
+                    sections.forEach(section => {
+                        const container = document.querySelector(`#${section} .list-container`);
+                        if (container && data[section]) {
+                            container.innerHTML = generateListHTML(data[section]);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading content.json:', error);
                 });
             
             const tabs = document.querySelectorAll('.section-tab');
@@ -448,160 +494,19 @@
                 </div>
                 
                 <div id="recent" class="section-content active">
-                    <div class="list">
-                        <div class="list-date">Winter 2026</div>
-                        <div class="list-content">
-                            <p><a href="https://claimsengine.vercel.app/">Claims Engine</a>: A modular oracle system for ecological accounting and contracting</p>
-                            <div class="list-description">I'm building a framework for grassroots and local impact attestations with a grant from Celo and the Ethereum Foundation.</div>
-                        </div>
-                        <div class="list-date">Winter 2026</div>
-                        <div class="list-content">
-                            <p><a href="https://www.regen.foundation/#ecological-institutions-book"><em>Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World</em></a></p>
-                            <div class="list-description">You can acquire an advance copy and learn more about the book.</div>
-                        </div>
-                        <div class="list-date">Jan 2026</div>
-                        <div class="list-content">
-                            <p><a href="https://windtrust.io/">Wind Trust</a></p>
-                            <div class="list-description">A DAO whose permissioning and allocation protocols are controlled by wind flows in NYC.</div>
-                        </div>
-                        <div class="list-date">Dec 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=WiM5ym9ANpU&t=1618s">Institutional Development Kit</a></p>
-                            <div class="list-description">An introduction to the notion of an IDK, and how to use them.</div>
-                        </div>
-                        <div class="list-date">Dec 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=tLS6WSxqnAs">River Computer Salon</a> at The Fold, San Francisco</p>
-                            <div class="list-description">Introduction to River Computer in theory and practice.</div>
-                        </div>
-                        <div class="list-date">Dec 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/">Inside Bioregionalism's Tech-Driven Revival</a> by Doug Bierend, Noema Magazine</p>
-                        </div>
-                        <div class="list-date">Dec 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483">Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good</a> UC-Berkeley Lab for Inclusive FinTech (LIFT)</p>
-                        </div>
-                        <div class="list-date">Fall 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://autonomousforest.org/">Terra0: Autonomous Forest</a></p>
-                            <div class="list-description">I'm a founding board member of the Autonomous Forest Verein.</div>
-                        </div>
-                    </div>
+                    <div class="list-container"></div>
                 </div>
                 
                 <div id="talksandwriting" class="section-content">
-                    <div class="list">
-                        <div class="list-date">Winter 2026</div>
-                        <div class="list-content">
-                            <p><a href="https://www.regen.foundation/#ecological-institutions-book"><em>Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World</em></a></p>
-                            <div class="list-description">An intro to the book with a focus on the Institutional Development Kit (IDK)</div>
-                        </div>
-                        <div class="list-date">Dec 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=tLS6WSxqnAs">River Computer Salon</a> at The Fold, San Francisco</p>
-                        </div>
-                        <div class="list-date">Jun 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://blockchain.ubc.ca/node/10318">"Protocols of Interdependence"</a> Lecture at Blockchain @ University of British Columbia</p>
-                        </div>
-                        <div class="list-date">May 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=c7bMmjbbdTk">"Living Covenants in Theory and Practice"</a> Presentation at the Cascadia Bioregional Summit</p>
-                        </div>
-                        <div class="list-date">May 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://austinwadesmith.substack.com/p/a-really-short-introduction-to-feral">A Short Introduction to Feral Technology</a></p>
-                            <div class="list-description">Feral Technology Series</div>
-                        </div>
-                        <div class="list-date">Feb 2025</div>
-                        <div class="list-content">
-                            <p><a href="https://webtv.un.org/en/asset/k1m/k1m2a83v25">"Introducing the Claims Engine"</a> United Nations Innovation Partnership Forum</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://paragraph.com/@austinwadesmith/ecological-institutions-protocols-to-grow-autonomous-and-convivial-ecological-actors">Ecological Institutions: Protocols to Grow Autonomous and Convivial Actors</a></p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://www.las-art.foundation/explore/publication-interspecies-future-a-primer">"Legibility for the Living World"</a> in <i>Interspecies Primer</i> by Light Art Space</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=i0r-aZ2WKk4">"The Shape of DAOs to Come"</a> presentation at ETH Denver</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://paragraph.com/@austinwadesmith/commons-sense-the-social-life-of-ecological-digital-linkages">Commons Sense - The Social Life of Ecological ↔ Digital Linkages</a></p>
-                        </div>
-                        <div class="list-date">2023</div>
-                        <div class="list-content">
-                            <p><a href="https://www.gsd.harvard.edu/event/ddes-conference-23-embodied-climates/">"Building Feral Webs"</a> presentation at Climate Tectonics Conference at Harvard GSD</p>
-                        </div>
-                        <div class="list-date">2023</div>
-                        <div class="list-content">
-                            <p><a href="https://paragraph.com/@austinwadesmith/undualing">Undualing</a></p>
-                        </div>
-                        <div class="list-date">2023</div>
-                        <div class="list-content">
-                            <p><a href="https://paragraph.com/@austinwadesmith/queer-servers-and-feral-webs">Queer Servers and Feral Webs</a></p>
-                            <div class="list-description">Feral Technology Series</div>
-                        </div>
-                        <div class="list-date">2020</div>
-                        <div class="list-content">
-                            <p><a href="https://www.are.na/editorial/place-holder">"Place Holder"</a> Are.na Annual 2020</p>
-                        </div>
-                        <div class="list-date">2020</div>
-                        <div class="list-content">
-                            <p><a href="https://pioneerworks.org/classes/digital-animism">"Digital Animism"</a> workshop at Pioneer Works, New York</p>
-                        </div>
-                    </div>
+                    <div class="list-container"></div>
                 </div>
                 
                 <div id="features" class="section-content">
-                    <div class="list">
-                        <div class="list-date">2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/">Inside Bioregionalism’s Tech-Driven Revival</a> by Doug Bierend, Noema Magazine</p>
-                        </div>
-                        <div class="list-date">2025</div>
-                        <div class="list-content">
-                            <p><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483">Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good</a> UC-Berkeley Lab for Inclusive FinTech (LIFT)</p>
-                        </div>
-                        <div class="list-date">2025</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=FAYI_9yf96o&t=2520s">"Blockchain Gov: Network Nations"</a> Podcast</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://futureobservatory.org/programme/exhibitions/more-than-human">"More Than Human"</a> Future Observatory Journal No.2 by the Design Museum</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://www.e-flux.com/journal/146/611854/daylighting-cryptocurrency-s-waterstreams">"Daylighting Cryptocurrency’s Water Streams"</a> by Isabel Ling, eflux journal #146</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://maearth.com/studio/ecological-institutions-extitutions-exclosures">"Ecological Institutions"</a> Ma Earth Podcast with Jessie Kate Schingler and Tony Lai</p>
-                        </div>
-                        <div class="list-date">2024</div>
-                        <div class="list-content">
-                            <p><a href="https://michaelgarfield.substack.com/p/220">"Open Source Commons for Sensemaking"</a> Future Fossils Podcast</p>
-                        </div>
-                        <div class="list-date">2023</div>
-                        <div class="list-content">
-                            <p><a href="https://www.youtube.com/watch?v=19A2lofsByc">"Legibility of the Living World"</a> Ma Earth Podcast</p>
-                        </div>
-                    </div>
+                    <div class="list-container"></div>
                 </div>
                 
                 <div id="projects" class="section-content">
-                        <div class="list">
-                            <div class="list-date"></div>
-                            <div class="list-content">
-                                <p>coming soon...</p>
-                            </div>
-                        </div>
+                    <div class="list-container"></div>
                 </div>
             </div>
         </div>

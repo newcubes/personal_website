@@ -1,0 +1,196 @@
+{
+  "recent": [
+    {
+      "date": "Winter 2026",
+      "title": "Claims Engine",
+      "url": "https://claimsengine.vercel.app/",
+      "suffix": ": A modular oracle system for ecological accounting and contracting",
+      "description": "I'm building a framework for grassroots and local impact attestations with a grant from Celo and the Ethereum Foundation."
+    },
+    {
+      "date": "Winter 2026",
+      "title": "Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World",
+      "url": "https://www.regen.foundation/#ecological-institutions-book",
+      "italic": true,
+      "description": "You can acquire an advance copy and learn more about the book."
+    },
+    {
+      "date": "Jan 2026",
+      "title": "Wind Trust",
+      "url": "https://windtrust.io/",
+      "description": "A DAO whose permissioning and allocation protocols are controlled by wind flows in NYC."
+    },
+    {
+      "date": "Dec 2025",
+      "title": "Institutional Development Kit",
+      "url": "https://www.youtube.com/watch?v=WiM5ym9ANpU&t=1618s",
+      "description": "An introduction to the notion of an IDK, and how to use them."
+    },
+    {
+      "date": "Dec 2025",
+      "title": "River Computer Salon",
+      "url": "https://www.youtube.com/watch?v=tLS6WSxqnAs",
+      "suffix": " at The Fold, San Francisco",
+      "description": "Introduction to River Computer in theory and practice."
+    },
+    {
+      "date": "Dec 2025",
+      "title": "Inside Bioregionalism's Tech-Driven Revival",
+      "url": "https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/",
+      "suffix": " by Doug Bierend, Noema Magazine"
+    },
+    {
+      "date": "Dec 2025",
+      "title": "Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483",
+      "suffix": " UC-Berkeley Lab for Inclusive FinTech (LIFT)"
+    },
+    {
+      "date": "Fall 2025",
+      "title": "Terra0: Autonomous Forest",
+      "url": "https://autonomousforest.org/",
+      "description": "I'm a founding board member of the Autonomous Forest Verein."
+    }
+  ],
+  "talksandwriting": [
+    {
+      "date": "Winter 2026",
+      "title": "Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World",
+      "url": "https://www.regen.foundation/#ecological-institutions-book",
+      "italic": true,
+      "description": "An intro to the book with a focus on the Institutional Development Kit (IDK)"
+    },
+    {
+      "date": "Dec 2025",
+      "title": "River Computer Salon",
+      "url": "https://www.youtube.com/watch?v=tLS6WSxqnAs",
+      "suffix": " at The Fold, San Francisco"
+    },
+    {
+      "date": "Jun 2025",
+      "title": "\"Protocols of Interdependence\"",
+      "url": "https://blockchain.ubc.ca/node/10318",
+      "suffix": " Lecture at Blockchain @ University of British Columbia"
+    },
+    {
+      "date": "May 2025",
+      "title": "\"Living Covenants in Theory and Practice\"",
+      "url": "https://www.youtube.com/watch?v=c7bMmjbbdTk",
+      "suffix": " Presentation at the Cascadia Bioregional Summit"
+    },
+    {
+      "date": "May 2025",
+      "title": "A Short Introduction to Feral Technology",
+      "url": "https://austinwadesmith.substack.com/p/a-really-short-introduction-to-feral",
+      "description": "Feral Technology Series"
+    },
+    {
+      "date": "Feb 2025",
+      "title": "\"Introducing the Claims Engine\"",
+      "url": "https://webtv.un.org/en/asset/k1m/k1m2a83v25",
+      "suffix": " United Nations Innovation Partnership Forum"
+    },
+    {
+      "date": "2024",
+      "title": "Ecological Institutions: Protocols to Grow Autonomous and Convivial Actors",
+      "url": "https://paragraph.com/@austinwadesmith/ecological-institutions-protocols-to-grow-autonomous-and-convivial-ecological-actors"
+    },
+    {
+      "date": "2024",
+      "title": "\"Legibility for the Living World\"",
+      "url": "https://www.las-art.foundation/explore/publication-interspecies-future-a-primer",
+      "suffix": " in <i>Interspecies Primer</i> by Light Art Space"
+    },
+    {
+      "date": "2024",
+      "title": "\"The Shape of DAOs to Come\"",
+      "url": "https://www.youtube.com/watch?v=i0r-aZ2WKk4",
+      "suffix": " presentation at ETH Denver"
+    },
+    {
+      "date": "2024",
+      "title": "Commons Sense - The Social Life of Ecological ↔ Digital Linkages",
+      "url": "https://paragraph.com/@austinwadesmith/commons-sense-the-social-life-of-ecological-digital-linkages"
+    },
+    {
+      "date": "2023",
+      "title": "\"Building Feral Webs\"",
+      "url": "https://www.gsd.harvard.edu/event/ddes-conference-23-embodied-climates/",
+      "suffix": " presentation at Climate Tectonics Conference at Harvard GSD"
+    },
+    {
+      "date": "2023",
+      "title": "Undualing",
+      "url": "https://paragraph.com/@austinwadesmith/undualing"
+    },
+    {
+      "date": "2023",
+      "title": "Queer Servers and Feral Webs",
+      "url": "https://paragraph.com/@austinwadesmith/queer-servers-and-feral-webs",
+      "description": "Feral Technology Series"
+    },
+    {
+      "date": "2020",
+      "title": "\"Place Holder\"",
+      "url": "https://www.are.na/editorial/place-holder",
+      "suffix": " Are.na Annual 2020"
+    },
+    {
+      "date": "2020",
+      "title": "\"Digital Animism\"",
+      "url": "https://pioneerworks.org/classes/digital-animism",
+      "suffix": " workshop at Pioneer Works, New York"
+    }
+  ],
+  "features": [
+    {
+      "date": "2025",
+      "title": "Inside Bioregionalism's Tech-Driven Revival",
+      "url": "https://www.noemamag.com/inside-the-push-to-rebuild-society-around-ecosystems/",
+      "suffix": " by Doug Bierend, Noema Magazine"
+    },
+    {
+      "date": "2025",
+      "title": "Unblocking Paths to Shared Prosperity with Blockchain: Stablecoins for Good",
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5700483",
+      "suffix": " UC-Berkeley Lab for Inclusive FinTech (LIFT)"
+    },
+    {
+      "date": "2025",
+      "title": "\"Blockchain Gov: Network Nations\"",
+      "url": "https://www.youtube.com/watch?v=FAYI_9yf96o&t=2520s",
+      "suffix": " Podcast"
+    },
+    {
+      "date": "2024",
+      "title": "\"More Than Human\"",
+      "url": "https://futureobservatory.org/programme/exhibitions/more-than-human",
+      "suffix": " Future Observatory Journal No.2 by the Design Museum"
+    },
+    {
+      "date": "2024",
+      "title": "\"Daylighting Cryptocurrency's Water Streams\"",
+      "url": "https://www.e-flux.com/journal/146/611854/daylighting-cryptocurrency-s-waterstreams",
+      "suffix": " by Isabel Ling, eflux journal #146"
+    },
+    {
+      "date": "2024",
+      "title": "\"Ecological Institutions\"",
+      "url": "https://maearth.com/studio/ecological-institutions-extitutions-exclosures",
+      "suffix": " Ma Earth Podcast with Jessie Kate Schingler and Tony Lai"
+    },
+    {
+      "date": "2024",
+      "title": "\"Open Source Commons for Sensemaking\"",
+      "url": "https://michaelgarfield.substack.com/p/220",
+      "suffix": " Future Fossils Podcast"
+    },
+    {
+      "date": "2023",
+      "title": "\"Legibility of the Living World\"",
+      "url": "https://www.youtube.com/watch?v=19A2lofsByc",
+      "suffix": " Ma Earth Podcast"
+    }
+  ],
+  "projects": []
+}
