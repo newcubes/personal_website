@@ -310,17 +310,47 @@
             const contents = document.querySelectorAll('.section-content');
             let mobileInitialized = false;
             
+            // Function to activate a section by its ID
+            function activateSection(sectionId) {
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+                
+                const targetTab = document.querySelector(`.section-tab[data-section="${sectionId}"]`);
+                const targetContent = document.getElementById(sectionId);
+                
+                if (targetTab && targetContent) {
+                    targetTab.classList.add('active');
+                    targetContent.classList.add('active');
+                }
+            }
+            
+            // Function to get section from URL hash
+            function getSectionFromHash() {
+                const hash = window.location.hash.slice(1); // Remove the #
+                const validSections = ['about', 'recent', 'talksandwriting', 'features', 'projects'];
+                return validSections.includes(hash) ? hash : null;
+            }
+            
+            // Handle initial load and hash changes
+            function handleHashChange() {
+                const sectionFromHash = getSectionFromHash();
+                if (sectionFromHash) {
+                    activateSection(sectionFromHash);
+                } else if (window.innerWidth <= 900) {
+                    activateSection('about');
+                } else {
+                    activateSection('recent');
+                }
+            }
+            
             function handleMobileView() {
                 if (window.innerWidth <= 900) {
                     if (!mobileInitialized) {
-                        tabs.forEach(t => t.classList.remove('active'));
-                        contents.forEach(c => c.classList.remove('active'));
-                        
-                        const aboutTab = document.querySelector('.section-tab[data-section="about"]');
-                        const aboutContent = document.getElementById('about');
-                        if (aboutTab && aboutContent) {
-                            aboutTab.classList.add('active');
-                            aboutContent.classList.add('active');
+                        const sectionFromHash = getSectionFromHash();
+                        if (sectionFromHash) {
+                            activateSection(sectionFromHash);
+                        } else {
+                            activateSection('about');
                         }
                         mobileInitialized = true;
                     }
@@ -329,7 +359,12 @@
                 }
             }
             
+            // Initialize based on hash or default
+            handleHashChange();
             handleMobileView();
+            
+            // Listen for hash changes (browser back/forward)
+            window.addEventListener('hashchange', handleHashChange);
             
             let resizeTimeout;
             window.addEventListener('resize', function() {
@@ -345,14 +380,10 @@
                 tab.addEventListener('click', function() {
                     const sectionId = this.getAttribute('data-section');
                     
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, `#${sectionId}`);
                     
-                    this.classList.add('active');
-                    const targetContent = document.getElementById(sectionId);
-                    if (targetContent) {
-                        targetContent.classList.add('active');
-                    }
+                    activateSection(sectionId);
                 });
             });
         });
@@ -407,9 +438,9 @@
                 <div class="section-tabs">
                     <button class="section-tab mobile-only" data-section="about"><img src="icon4.svg" alt="" class="section-tab-icon"><span>AWS</span></button>
                     <button class="section-tab active" data-section="recent"><img src="icon1.svg" alt="" class="section-tab-icon"><span>Recent</span></button>
-                    <button class="section-tab" data-section="writing"><img src="icon2.svg" alt="" class="section-tab-icon"><span>Talks & Writing</span></button>
+                    <button class="section-tab" data-section="talksandwriting"><img src="icon2.svg" alt="" class="section-tab-icon"><span>Talks & Writing</span></button>
                     <button class="section-tab" data-section="features"><img src="icon3.svg" alt="" class="section-tab-icon"><span>Features</span></button>
-                    <button class="section-tab" data-section="projects"><img src="icon3.svg" alt="" class="section-tab-icon"><span>Projects</span></button>
+                    <button class="section-tab" data-section="projects"><img src="icon5.svg" alt="" class="section-tab-icon"><span>Projects</span></button>
                 </div>
                 
                 <div id="about" class="section-content mobile-only">
@@ -459,7 +490,7 @@
                     </div>
                 </div>
                 
-                <div id="writing" class="section-content">
+                <div id="talksandwriting" class="section-content">
                     <div class="list">
                         <div class="list-date">Winter 2026</div>
                         <div class="list-content">
