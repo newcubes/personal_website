@@ -1,14 +1,25 @@
 {
   "recent": [
     {
-      "date": "Winter 2026",
+      "date": "March 2026",
+      "title": "Panel Discussion at Van Allen Institute, NYC",
+      "url": "https://luma.com/zcgkli15",
+      "description": "Death: A Salon on Ethics of Technology"
+    },
+    {
+      "date": "Feb 2026",
+      "title": "Presentation at UC Berkeley HAAS School of Business",
+      "description": "Emerging tech for cooperative ownership and data governance."
+    },
+    {
+      "date": "Jan 2026",
       "title": "Claims Engine",
       "url": "https://claimsengine.vercel.app/",
       "suffix": ": A modular oracle system for ecological accounting and contracting",
       "description": "I'm building a framework for grassroots and local impact attestations with a grant from Celo and the Ethereum Foundation."
     },
     {
-      "date": "Winter 2026",
+      "date": "Dec 2025",
       "title": "Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World",
       "url": "https://www.regen.foundation/#ecological-institutions-book",
       "italic": true,
