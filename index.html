@@ -332,7 +332,12 @@
                             if (item.description) {
                                 html += `<div class="list-description">${item.description}</div>`;
                             }
-                            
+
+                            // Add a secondary link if present
+                            if (item.secondaryUrl) {
+                                html += `<div class="list-description"><a href="${item.secondaryUrl}">${item.secondaryText || 'Link'}</a></div>`;
+                            }
+
                             html += '</div>';
                         });
                         html += '</div>';
