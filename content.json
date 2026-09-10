@@ -1,6 +1,23 @@
 {
   "recent": [
     {
+      "date": "Oct 2026",
+      "title": "Leading a session at The Society for Social Studies of Science Conference",
+      "url": "https://www.4sonline.org/about_the_conference_toronto.php",
+      "description": "\"Validation in Context: Composable Witness in Living Covenants\" in the program \"Protocols, Among Humans and Machines\"."
+    },
+    {
+      "date": "Sept 2026",
+      "title": "Visiting Expert Critic at Columbia University's Graduate School of Architecture, Planning and Preservation",
+      "description": "Offering interdisciplinary expertise on regenerative economics and technology in their advanced studio program."
+    },
+    {
+      "date": "Aug 2026",
+      "title": "Deploying Stablecoins for Good: Paths to Shared Prosperity with Blockchain",
+      "url": "https://journals.sagepub.com/doi/full/10.1177/00081256261464630",
+      "description": "My work exploring the integration of stablecoins for scaled environmental resilience was featured in California Management Review."
+    },
+    {
       "date": "July 2026",
       "title": "Presentation at Decentralized Web Camp plenary",
       "url": "https://talx.dod.ngo/dwebcamp-2026/talk/AWBLRR/",
@@ -92,6 +109,12 @@
   ],
   "talksandwriting": [
     {
+      "date": "Oct 2026",
+      "title": "\"Validation in Context: Composable Witness in Living Covenants\"",
+      "url": "https://www.4sonline.org/about_the_conference_toronto.php",
+      "suffix": " session in the \"Protocols, Among Humans and Machines\" program at The Society for Social Studies of Science (4S) Conference, Toronto"
+    },
+    {
       "date": "Winter 2026",
       "title": "Ecological Institutions: Law, Economics, and Technology in a More-Than-Human World",
       "url": "https://www.regen.foundation/#ecological-institutions-book",
@@ -181,6 +204,12 @@
     }
   ],
   "features": [
+    {
+      "date": "2026",
+      "title": "Deploying Stablecoins for Good: Paths to Shared Prosperity with Blockchain",
+      "url": "https://journals.sagepub.com/doi/full/10.1177/00081256261464630",
+      "suffix": " California Management Review"
+    },
     {
       "date": "2026",
       "title": "The Cycles of Regenerative Governance in Kenya",
