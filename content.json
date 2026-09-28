@@ -7,6 +7,17 @@
       "description": "I'll be presenting \"Validation in Context: Composable Witness in Living Covenants\" in the program \"Protocols, Among Humans and Machines\"."
     },
     {
+      "date": "Oct 2026",
+      "title": "Panel at the Ownership Economy Summit, NYC",
+      "url": "https://www.ownershipeconomy.com/summit/nyc/agenda",
+      "description": "I'll be joining Jahed Momand of Cerulean Ventures and John Garry of Garry Elevator on \"Onchain Coordination, Programmable Ownership and Internet-Native Governance\"."
+    },
+    {
+      "date": "Sept 2026",
+      "title": "Lecture at NYU Tandon's Integrated Design & Media (IDM) program",
+      "description": "I'll be giving a lecture called \"Earth Agents\"."
+    },
+    {
       "date": "Sept 2026",
       "title": "Visiting Expert Critic at Columbia University's Graduate School of Architecture, Planning and Preservation",
       "url": "https://www.arch.columbia.edu/",
@@ -114,6 +125,17 @@
       "title": "\"Validation in Context: Composable Witness in Living Covenants\"",
       "url": "https://www.4sonline.org/about_the_conference_toronto.php",
       "suffix": " session in the \"Protocols, Among Humans and Machines\" program at The Society for Social Studies of Science (4S) Conference, Toronto"
+    },
+    {
+      "date": "Oct 2026",
+      "title": "\"Onchain Coordination, Programmable Ownership and Internet-Native Governance\"",
+      "url": "https://www.ownershipeconomy.com/summit/nyc/agenda",
+      "suffix": " panel at the Ownership Economy Summit, NYC"
+    },
+    {
+      "date": "Sept 2026",
+      "title": "\"Earth Agents\"",
+      "suffix": " Lecture at NYU Tandon Integrated Design & Media (IDM)"
     },
     {
       "date": "Winter 2026",
